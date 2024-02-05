@@ -1,0 +1,5 @@
+../Core/Src/levelmeter.c:10:10:ledState	2
+../Core/Src/levelmeter.c:21:6:ledDirectDrive	2
+../Core/Src/levelmeter.c:30:6:shiftOut	2
+../Core/Src/levelmeter.c:51:9:calculateLevel	1
+../Core/Src/levelmeter.c:57:6:displayLevel	2
