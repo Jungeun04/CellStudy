@@ -1,0 +1,1 @@
+[ProductLink-nPM1100](https://www.nordicsemi.com/Products/nPM1100)
