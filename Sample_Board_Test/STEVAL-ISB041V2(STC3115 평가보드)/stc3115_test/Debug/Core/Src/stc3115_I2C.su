@@ -1,0 +1,2 @@
+../Core/Src/stc3115_I2C.c:46:5:I2C_Write	48	static
+../Core/Src/stc3115_I2C.c:69:5:I2C_Read	48	static
