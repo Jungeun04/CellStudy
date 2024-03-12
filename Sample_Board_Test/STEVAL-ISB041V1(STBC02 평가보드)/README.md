@@ -48,7 +48,7 @@ STBC02 의 내부 설정을 하기 위해서는 us단위의 대기 시간이 필
 ```C
 
 /* Define the MPU frequency (in Hz) */
-#define SYSTEM_CLOCK 168000000 // 168MHz
+#define SYSTEM_CLOCK 168000000 // 168MHz
 
 /* Delay function in microseconds */
 void delay_us(uint32_t us) {
