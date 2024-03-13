@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "2024-03-07_04-53-38")(type "KiCad")(uri "C:/Users/user/Desktop/CellStudy/schematic/STBC02AJR/KiCADv6/2024-03-07_04-53-38.kicad_sym")(options "")(descr ""))
+  (lib (name "STC3115IQT")(type "KiCad")(uri "C:/Users/user/Desktop/CellStudy/schematic/STC3115IQT/STC3115IQT.kicad_sym")(options "")(descr ""))
+)
