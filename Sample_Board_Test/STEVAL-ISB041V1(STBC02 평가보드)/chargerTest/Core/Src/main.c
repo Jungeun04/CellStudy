@@ -97,18 +97,30 @@ int main(void)
   MX_DMA_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-  CLCD_GPIO_Init();
-  CLCD_Init();
-  CLCD_Puts(0, 0, "Welcome to");
+  //CLCD_GPIO_Init();
+  //CLCD_Init();
+  //CLCD_Puts(0, 0, "Welcome to");
 
-  uint16_t adcval[5];
-  HAL_ADC_Start_DMA(&hadc1, &adcval[0], 5);
+  uint32_t adcval[5];
+  HAL_ADC_Start_DMA(&hadc1, adcval, 5);
 
   uint8_t str[20];
 
   // BAT_MS ON
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_RESET);
   HAL_Delay(1000);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_SET);
+  delay_us(370);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_RESET);
+  for(uint8_t i = 0;i<10;i++){
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_SET);
+	  delay_us(110);
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_RESET);
+	  delay_us(110);
+  }
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_SET);
+  delay_us(520);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,10 +130,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_SET);
-	  delay_us(100);
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_3,GPIO_PIN_RESET);
-	  delay_us(100);
+	  //sprintf(&str[0], "%4d %4d",adcval[0], adcval[1]);
+	  //CLCD_Puts(0, 0, str);
+	  //sprintf(str, "%4d %4d",adcval[2], adcval[4]);
+	  //CLCD_Puts(0, 1, str);
+
+	  displayLevel(calculateLevel((uint16_t)adcval[4]));
+	  HAL_Delay(200);
   }
   /* USER CODE END 3 */
 }
