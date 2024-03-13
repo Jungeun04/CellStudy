@@ -40,4 +40,23 @@ ST사에서 작성한 [UM2185](https://www.st.com/resource/en/user_manual/um2185
 
 ## MCU와 같이 사용하기
 
-STBC02는 몇 개의 전용 핀을 이용하여 MCU와 상호작용하며 충전, 전원을 관리 할 수 있습니다.
+STBC02는 몇 개의 전용 핀을 이용하여 MCU와 상호작용하며 충전, 전원을 관리 할 수 있습니다.  
+  
+### us를 만들기위한 함수
+STBC02 의 내부 설정을 하기 위해서는 us단위의 대기 시간이 필요하다.  
+하지만 HAL Driver에서는 ms만 제공하므로 직접 구현해야한다.
+```C
+
+/* Define the MPU frequency (in Hz) */
+#define SYSTEM_CLOCK 168000000 // 168MHz
+
+/* Delay function in microseconds */
+void delay_us(uint32_t us) {
+    uint32_t count = us * (SYSTEM_CLOCK / 21000000);
+    for(uint32_t i = 0; i < count; i++) {
+        __NOP(); // 빈 명령어를 사용하여 딜레이 생성
+    }
+}
+
+```
+10us 이하에서는 더욱 오차가 심하겠지만 보통 Delay 기능들은 높은 정확도를 요구하지는 않는다.
